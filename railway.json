@@ -1,11 +1,12 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
-    "builder": "nixpacks"
+    "builder": "nixpacks",
+    "nixpacksVersion": "latest"
   },
   "deploy": {
     "numReplicas": 1,
-    "startCommand": "php artisan migrate --force && php -S 0.0.0.0:${PORT:-8080} -t public",
+    "startCommand": "vendor/bin/heroku-php-apache2 public/",
     "restartPolicyMaxRetries": 5
   },
   "plugins": [
